@@ -1,5 +1,36 @@
 grammar scheme;
 
+// Lexer rules should come before parser rules
+BOOLEAN
+    : '#t'
+    | '#f'
+    ;
+
+QUOTE
+    : '\''
+    ;
+
+STRING
+    : '"' (~["\r\n] | '\\"')* '"'
+    ;
+
+NUMBER
+    : '-'? [0-9]+
+    ;
+
+IDENTIFIER
+    : [a-zA-Z_+\-*/<>=][a-zA-Z_0-9+\-*/<>=?]*
+    ;
+
+WS
+    : [ \t\r\n]+ -> skip
+    ;
+
+COMMENT
+    : ';' ~[\r\n]* -> skip
+    ;
+
+// Parser rules
 program
     : statement+ EOF
     ;
@@ -18,9 +49,10 @@ expr
     | '(' IDENTIFIER expr* ')'              # FunctionCall
     | '(' 'quote' expr ')'                  # QuoteExpr
     | NUMBER                                # NumberExpr
+    | STRING                                # StringExpr
     | IDENTIFIER                            # IdentifierExpr
-    | boolean                               # BooleanExpr
-    | list                                  # ListExpr
+    | BOOLEAN                               # BooleanExpr
+    | '(' expr* ')'                         # ListExpr
     ;
 
 operation
@@ -35,35 +67,10 @@ letBinding
     : '(' IDENTIFIER expr ')'
     ;
 
-list
-    : '(' expr* ')'
-    ;
-
 funcDef
     : '(' 'define' '(' IDENTIFIER (IDENTIFIER)* ')' expr ')'
     ;
 
 consDef
     : '(' 'define' IDENTIFIER expr ')'
-    ;
-
-boolean
-    : 'true'
-    | 'false'
-    ;
-
-NUMBER
-    : [0-9]+
-    ;
-
-IDENTIFIER
-    : [a-zA-Z_][a-zA-Z_0-9]*
-    ;
-
-WS
-    : [ \t\r\n]+ -> skip
-    ;
-
-COMMENT
-    : ';' ~[\r\n]* -> skip
     ;

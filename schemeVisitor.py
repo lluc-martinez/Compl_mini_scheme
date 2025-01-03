@@ -64,6 +64,11 @@ class schemeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by schemeParser#StringExpr.
+    def visitStringExpr(self, ctx:schemeParser.StringExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by schemeParser#IdentifierExpr.
     def visitIdentifierExpr(self, ctx:schemeParser.IdentifierExprContext):
         return self.visitChildren(ctx)
@@ -94,11 +99,6 @@ class schemeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by schemeParser#list.
-    def visitList(self, ctx:schemeParser.ListContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by schemeParser#funcDef.
     def visitFuncDef(self, ctx:schemeParser.FuncDefContext):
         return self.visitChildren(ctx)
@@ -106,11 +106,6 @@ class schemeVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by schemeParser#consDef.
     def visitConsDef(self, ctx:schemeParser.ConsDefContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by schemeParser#boolean.
-    def visitBoolean(self, ctx:schemeParser.BooleanContext):
         return self.visitChildren(ctx)
 
 

@@ -107,6 +107,15 @@ class schemeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by schemeParser#StringExpr.
+    def enterStringExpr(self, ctx:schemeParser.StringExprContext):
+        pass
+
+    # Exit a parse tree produced by schemeParser#StringExpr.
+    def exitStringExpr(self, ctx:schemeParser.StringExprContext):
+        pass
+
+
     # Enter a parse tree produced by schemeParser#IdentifierExpr.
     def enterIdentifierExpr(self, ctx:schemeParser.IdentifierExprContext):
         pass
@@ -161,15 +170,6 @@ class schemeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by schemeParser#list.
-    def enterList(self, ctx:schemeParser.ListContext):
-        pass
-
-    # Exit a parse tree produced by schemeParser#list.
-    def exitList(self, ctx:schemeParser.ListContext):
-        pass
-
-
     # Enter a parse tree produced by schemeParser#funcDef.
     def enterFuncDef(self, ctx:schemeParser.FuncDefContext):
         pass
@@ -185,15 +185,6 @@ class schemeListener(ParseTreeListener):
 
     # Exit a parse tree produced by schemeParser#consDef.
     def exitConsDef(self, ctx:schemeParser.ConsDefContext):
-        pass
-
-
-    # Enter a parse tree produced by schemeParser#boolean.
-    def enterBoolean(self, ctx:schemeParser.BooleanContext):
-        pass
-
-    # Exit a parse tree produced by schemeParser#boolean.
-    def exitBoolean(self, ctx:schemeParser.BooleanContext):
         pass
 
 
