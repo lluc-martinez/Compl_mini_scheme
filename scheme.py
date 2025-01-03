@@ -8,7 +8,7 @@ class SchemeInterpreter(schemeVisitor):
     def __init__(self):
         self.global_env = {
             'display': self.display_function,
-            'read': input,
+            'read': self.read_function,
             'newline': lambda: print(),
             'mod': lambda x, y: x % y,
             'and': lambda *args: all(args),
@@ -29,32 +29,73 @@ class SchemeInterpreter(schemeVisitor):
             print(value, end='')
         return None  # Return None instead of the value to avoid double printing
 
+    def read_function(self):
+        return int(input())
+
     def get_variable(self, name, env):
+        # Look up variable in current environment chain
         if name in env:
             return env[name]
-        elif name in self.global_env:
+        if name in self.global_env:
             return self.global_env[name]
-        else:
-            raise NameError(f"Undefined variable: {name}")
+        raise NameError(f"Undefined variable: {name}")
 
     def visitProgram(self, ctx):
         result = None
-        for stmt in ctx.statement():
-            result = self.visit(stmt)
+        # First process all definitions and expressions
+        for expr in ctx.expr():
+            result = self.visit(expr)
+        
+        # Then execute main if it exists
+        if 'main' in self.global_env:
+            main_func = self.global_env['main']
+            if callable(main_func):
+                try:
+                    result = main_func()
+                except Exception as e:
+                    print(f"Error in main: {e}")
         return result
 
+    def visitVarDef(self, ctx):
+        name = ctx.IDENTIFIER().getText()
+        value = self.visit(ctx.expr())
+        self.global_env[name] = value
+        return None
+
     def visitFuncDef(self, ctx):
-        func_name = ctx.IDENTIFIER(0).getText()  # El primer IDENTIFIER es el nombre de la función
-        params = [param.getText() for param in ctx.IDENTIFIER()[1:]]  # Los demás son parámetros
-        body = ctx.expr()
-        self.global_env[func_name] = (params, body)
-
-
-    def visitConsDef(self, ctx):
-        const_name = ctx.IDENTIFIER().getText()
-        const_value = self.visit(ctx.expr())
-        self.global_env[const_name] = const_value
-        # Don't return the value for define statements
+        func_name = ctx.IDENTIFIER(0).getText()
+        params = [param.getText() for param in ctx.IDENTIFIER()[1:]]
+        body_exprs = ctx.expr()
+        
+        # Capture the enclosing environment at definition time
+        def_env = self.current_env.copy()
+        
+        def func_wrapper(*args):
+            if len(args) != len(params):
+                raise ValueError(f"Incorrect number of arguments for function '{func_name}'")
+            
+            # Create new environment starting with captured definition environment
+            func_env = def_env.copy()
+            
+            # Add parameters to the function environment
+            for param, arg in zip(params, args):
+                func_env[param] = arg
+            
+            # Save and switch environment
+            prev_env = self.current_env
+            self.current_env = func_env
+            
+            try:
+                # Execute all expressions in body
+                result = None
+                for expr in body_exprs:
+                    result = self.visit(expr)
+                return result
+            finally:
+                self.current_env = prev_env
+        
+        # Store function in global environment
+        self.global_env[func_name] = func_wrapper
         return None
 
     def visitOperationExpr(self, ctx):
@@ -92,14 +133,29 @@ class SchemeInterpreter(schemeVisitor):
             raise ValueError(f"Unknown operator: {op}")
 
     def visitLetExpr(self, ctx):
-        local_env = self.current_env.copy()  # Create a new local environment
+        # Create new environment extending current one
+        new_env = self.current_env.copy()
+        
+        # First evaluate all bindings in CURRENT environment
         for binding in ctx.letBinding():
             var_name = binding.IDENTIFIER().getText()
-            value = self.visit(binding.expr(), env=local_env)
-            local_env[var_name] = value
-
-        # Evaluate the body of the let expression in the updated environment
-        return self.visit(ctx.expr(), env=local_env)
+            # Evaluate in current environment, before any new bindings
+            value = self.visit(binding.expr())
+            new_env[var_name] = value
+        
+        # Save current environment
+        prev_env = self.current_env
+        # Switch to new environment for body evaluation
+        self.current_env = new_env
+        
+        try:
+            # Execute all expressions in body
+            result = None
+            for expr in ctx.expr():
+                result = self.visit(expr)
+            return result
+        finally:
+            self.current_env = prev_env
 
     def visitIfExpr(self, ctx):
         condition = self.visit(ctx.expr(0))
@@ -139,28 +195,42 @@ class SchemeInterpreter(schemeVisitor):
 
     def visitFunctionCall(self, ctx):
         func_name = ctx.IDENTIFIER().getText()
+        # Evaluate arguments in current environment
         args = [self.visit(expr) for expr in ctx.expr()]
 
-        if func_name in self.global_env:
-            func = self.global_env[func_name]
-            if callable(func):
-                # Handle built-in functions
-                return func(*args)
-            else:
-                # Handle user-defined functions
-                params, body = func
-                if len(args) != len(params):
-                    raise ValueError(f"Incorrect number of arguments for function '{func_name}'")
-                local_env = self.current_env.copy()
-                local_env.update({param: arg for param, arg in zip(params, args)})
-                return self.visit(body, env=local_env)
-        else:
+        if func_name not in self.global_env:
             raise NameError(f"Undefined function: {func_name}")
+
+        func = self.global_env[func_name]
+        if callable(func):
+            # For built-in functions
+            if isinstance(func, type(lambda: None)) and not hasattr(func, '__defaults__'):
+                return func(*args)
+            
+            # For user-defined functions
+            # Create new environment extending current one
+            new_env = self.current_env.copy()
+            
+            # Save current environment
+            prev_env = self.current_env
+            self.current_env = new_env
+            
+            try:
+                return func(*args)
+            finally:
+                self.current_env = prev_env
+        else:
+            raise TypeError(f"'{func_name}' is not callable")
 
     def visitIdentifierExpr(self, ctx):
         var_name = ctx.IDENTIFIER().getText()
-        # Return the actual value when an identifier is referenced
-        return self.get_variable(var_name, self.current_env)
+        # Look up variable in current environment first, then global
+        try:
+            return self.get_variable(var_name, self.current_env)
+        except NameError:
+            if var_name in self.global_env:
+                return self.global_env[var_name]
+            raise NameError(f"Undefined variable: {var_name}")
 
     def visitNumberExpr(self, ctx):
         try:
@@ -168,15 +238,10 @@ class SchemeInterpreter(schemeVisitor):
         except ValueError:
             return float(ctx.NUMBER().getText())
 
-    def visit(self, ctx, env=None):
+    def visit(self, ctx):
         if ctx is None:
             return None
-
-        # Use the provided environment or default to global
-        if env is None:
-            env = self.global_env
-
-        self.current_env = env  # Set the current environment
+        # Do not override environment here; rely on self.current_env
         return super().visit(ctx)
 
     def visitExpressionStatement(self, ctx):

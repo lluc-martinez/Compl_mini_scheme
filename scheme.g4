@@ -15,7 +15,7 @@ STRING
     ;
 
 NUMBER
-    : '-'? [0-9]+
+    : '-'? [0-9]+ ('.' [0-9]+)?  // allow optional decimal part
     ;
 
 IDENTIFIER
@@ -32,27 +32,23 @@ COMMENT
 
 // Parser rules
 program
-    : statement+ EOF
-    ;
-
-statement
-    : expr                # ExpressionStatement
-    | funcDef             # FunctionDefinition
-    | consDef             # ConstantDefinition
+    : expr* EOF
     ;
 
 expr
-    : '(' operation expr+ ')'               # OperationExpr
-    | '(' 'if' expr expr expr ')'           # IfExpr
-    | '(' 'cond' condClause+ ')'            # CondExpr
-    | '(' 'let' '(' letBinding+ ')' expr ')' # LetExpr
-    | '(' IDENTIFIER expr* ')'              # FunctionCall
-    | '(' 'quote' expr ')'                  # QuoteExpr
-    | NUMBER                                # NumberExpr
-    | STRING                                # StringExpr
-    | IDENTIFIER                            # IdentifierExpr
-    | BOOLEAN                               # BooleanExpr
-    | '(' expr* ')'                         # ListExpr
+    : '(' 'define' '(' IDENTIFIER IDENTIFIER* ')' expr+ ')'  # FuncDef
+    | '(' 'define' IDENTIFIER expr ')'                      # VarDef
+    | '(' 'let' '(' letBinding+ ')' expr+ ')'              # LetExpr
+    | '(' 'if' expr expr expr ')'                          # IfExpr
+    | '(' 'cond' condClause+ ')'                           # CondExpr
+    | '(' operation expr+ ')'                              # OperationExpr
+    | '(' IDENTIFIER expr* ')'                             # FunctionCall
+    | QUOTE expr                                           # QuoteExpr
+    | NUMBER                                               # NumberExpr
+    | STRING                                               # StringExpr
+    | IDENTIFIER                                           # IdentifierExpr
+    | BOOLEAN                                              # BooleanExpr
+    | '(' expr* ')'                                        # ListExpr
     ;
 
 operation
@@ -65,12 +61,4 @@ condClause
 
 letBinding
     : '(' IDENTIFIER expr ')'
-    ;
-
-funcDef
-    : '(' 'define' '(' IDENTIFIER (IDENTIFIER)* ')' expr ')'
-    ;
-
-consDef
-    : '(' 'define' IDENTIFIER expr ')'
     ;

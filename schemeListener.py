@@ -17,39 +17,30 @@ class schemeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by schemeParser#ExpressionStatement.
-    def enterExpressionStatement(self, ctx:schemeParser.ExpressionStatementContext):
+    # Enter a parse tree produced by schemeParser#FuncDef.
+    def enterFuncDef(self, ctx:schemeParser.FuncDefContext):
         pass
 
-    # Exit a parse tree produced by schemeParser#ExpressionStatement.
-    def exitExpressionStatement(self, ctx:schemeParser.ExpressionStatementContext):
-        pass
-
-
-    # Enter a parse tree produced by schemeParser#FunctionDefinition.
-    def enterFunctionDefinition(self, ctx:schemeParser.FunctionDefinitionContext):
-        pass
-
-    # Exit a parse tree produced by schemeParser#FunctionDefinition.
-    def exitFunctionDefinition(self, ctx:schemeParser.FunctionDefinitionContext):
+    # Exit a parse tree produced by schemeParser#FuncDef.
+    def exitFuncDef(self, ctx:schemeParser.FuncDefContext):
         pass
 
 
-    # Enter a parse tree produced by schemeParser#ConstantDefinition.
-    def enterConstantDefinition(self, ctx:schemeParser.ConstantDefinitionContext):
+    # Enter a parse tree produced by schemeParser#VarDef.
+    def enterVarDef(self, ctx:schemeParser.VarDefContext):
         pass
 
-    # Exit a parse tree produced by schemeParser#ConstantDefinition.
-    def exitConstantDefinition(self, ctx:schemeParser.ConstantDefinitionContext):
+    # Exit a parse tree produced by schemeParser#VarDef.
+    def exitVarDef(self, ctx:schemeParser.VarDefContext):
         pass
 
 
-    # Enter a parse tree produced by schemeParser#OperationExpr.
-    def enterOperationExpr(self, ctx:schemeParser.OperationExprContext):
+    # Enter a parse tree produced by schemeParser#LetExpr.
+    def enterLetExpr(self, ctx:schemeParser.LetExprContext):
         pass
 
-    # Exit a parse tree produced by schemeParser#OperationExpr.
-    def exitOperationExpr(self, ctx:schemeParser.OperationExprContext):
+    # Exit a parse tree produced by schemeParser#LetExpr.
+    def exitLetExpr(self, ctx:schemeParser.LetExprContext):
         pass
 
 
@@ -71,12 +62,12 @@ class schemeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by schemeParser#LetExpr.
-    def enterLetExpr(self, ctx:schemeParser.LetExprContext):
+    # Enter a parse tree produced by schemeParser#OperationExpr.
+    def enterOperationExpr(self, ctx:schemeParser.OperationExprContext):
         pass
 
-    # Exit a parse tree produced by schemeParser#LetExpr.
-    def exitLetExpr(self, ctx:schemeParser.LetExprContext):
+    # Exit a parse tree produced by schemeParser#OperationExpr.
+    def exitOperationExpr(self, ctx:schemeParser.OperationExprContext):
         pass
 
 
@@ -167,24 +158,6 @@ class schemeListener(ParseTreeListener):
 
     # Exit a parse tree produced by schemeParser#letBinding.
     def exitLetBinding(self, ctx:schemeParser.LetBindingContext):
-        pass
-
-
-    # Enter a parse tree produced by schemeParser#funcDef.
-    def enterFuncDef(self, ctx:schemeParser.FuncDefContext):
-        pass
-
-    # Exit a parse tree produced by schemeParser#funcDef.
-    def exitFuncDef(self, ctx:schemeParser.FuncDefContext):
-        pass
-
-
-    # Enter a parse tree produced by schemeParser#consDef.
-    def enterConsDef(self, ctx:schemeParser.ConsDefContext):
-        pass
-
-    # Exit a parse tree produced by schemeParser#consDef.
-    def exitConsDef(self, ctx:schemeParser.ConsDefContext):
         pass
 
 

@@ -14,23 +14,18 @@ class schemeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by schemeParser#ExpressionStatement.
-    def visitExpressionStatement(self, ctx:schemeParser.ExpressionStatementContext):
+    # Visit a parse tree produced by schemeParser#FuncDef.
+    def visitFuncDef(self, ctx:schemeParser.FuncDefContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by schemeParser#FunctionDefinition.
-    def visitFunctionDefinition(self, ctx:schemeParser.FunctionDefinitionContext):
+    # Visit a parse tree produced by schemeParser#VarDef.
+    def visitVarDef(self, ctx:schemeParser.VarDefContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by schemeParser#ConstantDefinition.
-    def visitConstantDefinition(self, ctx:schemeParser.ConstantDefinitionContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by schemeParser#OperationExpr.
-    def visitOperationExpr(self, ctx:schemeParser.OperationExprContext):
+    # Visit a parse tree produced by schemeParser#LetExpr.
+    def visitLetExpr(self, ctx:schemeParser.LetExprContext):
         return self.visitChildren(ctx)
 
 
@@ -44,8 +39,8 @@ class schemeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by schemeParser#LetExpr.
-    def visitLetExpr(self, ctx:schemeParser.LetExprContext):
+    # Visit a parse tree produced by schemeParser#OperationExpr.
+    def visitOperationExpr(self, ctx:schemeParser.OperationExprContext):
         return self.visitChildren(ctx)
 
 
@@ -96,16 +91,6 @@ class schemeVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by schemeParser#letBinding.
     def visitLetBinding(self, ctx:schemeParser.LetBindingContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by schemeParser#funcDef.
-    def visitFuncDef(self, ctx:schemeParser.FuncDefContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by schemeParser#consDef.
-    def visitConsDef(self, ctx:schemeParser.ConsDefContext):
         return self.visitChildren(ctx)
 
 
