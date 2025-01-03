@@ -1,0 +1,10 @@
+Welcome to Extended Scheme Tests!
+The answer is: 42
+Factorial of 5 = 120
+sign of -10 = Negative
+sign of 0 = Zero
+sign of 7 = Positive
+count-down from 5 = [5, 4, 3, 2, 1, 0]
+Type two numbers for 'read' test: You typed: 2 and 10
+Their product is: 20
+Type a number for factorial: Factorial of 4 = 24
