@@ -60,6 +60,33 @@
         (c 30))
     (+ a b c)))
 
+; define a lambda function to square a number
+(define square (lambda (x) (* x x)))
+
+; define a function to test map with lambda
+(define (map-lambda-test)
+  (map (lambda (x) (* x x)) '(1 2 3 4)))
+
+; define a function to test filter with lambda
+(define (filter-lambda-test)
+  (filter (lambda (x) (= (mod x 2) 0)) '(1 2 3 4)))
+
+; define a function to test list operations with empty lists
+(define (empty-list-test)
+  (let ((empty '()))
+    (display "car of empty list: ")
+    (display (car empty))
+    (newline)
+    (display "cdr of empty list: ")
+    (display (cdr empty))
+    (newline)
+    (display "cons 1 to empty list: ")
+    (display (cons 1 empty))
+    (newline)
+    (display "null? empty list: ")
+    (display (null? empty))
+    (newline)))
+
 ; define a "main" that exercises the above
 (define (main)
   (display greeting)
@@ -124,4 +151,14 @@
   (display "let-test = ")
   (display (let-test))
   (newline)
+
+  (display "map-lambda-test = ")
+  (display (map-lambda-test))
+  (newline)
+
+  (display "filter-lambda-test = ")
+  (display (filter-lambda-test))
+  (newline)
+
+  (empty-list-test)
 )

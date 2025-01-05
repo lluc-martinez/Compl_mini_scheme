@@ -12,3 +12,9 @@ apply-twice double 3 = 12
 map-test = [2, 4, 6, 8]
 filter-test = [3, 4]
 let-test = 60
+map-lambda-test = [1, 4, 9, 16]
+filter-lambda-test = [2, 4]
+car of empty list: None
+cdr of empty list: []
+cons 1 to empty list: [1]
+null? empty list: #t

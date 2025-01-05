@@ -28,7 +28,9 @@ class SchemeInterpreter(schemeVisitor):
 
     def display_function(self, value):
         # Convert the value to string properly
-        if isinstance(value, (int, float)):
+        if isinstance(value, bool):
+            print('#t' if value else '#f', end='')
+        elif isinstance(value, (int, float)):
             print(str(value), end='')
         else:
             print(value, end='')
