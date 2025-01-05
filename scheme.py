@@ -7,6 +7,7 @@ from schemeVisitor import schemeVisitor
 
 class SchemeInterpreter(schemeVisitor):
     def __init__(self):
+        # Initialize the global environment with built-in functions
         self.global_env = {
             'display': self.display_function,
             'read': self.read_function,
@@ -37,6 +38,7 @@ class SchemeInterpreter(schemeVisitor):
         return int(input())
 
     def get_variable(self, name, env):
+        # Retrieve a variable from the environment
         if name in env:
             return env[name]
         if name in self.global_env:
@@ -44,6 +46,7 @@ class SchemeInterpreter(schemeVisitor):
         raise NameError(f"Undefined variable: {name}")
 
     def visitProgram(self, ctx):
+        # Visit all expressions in the program
         result = None
         for expr in ctx.expr():
             result = self.visit(expr)
@@ -57,12 +60,14 @@ class SchemeInterpreter(schemeVisitor):
         return result
 
     def visitVarDef(self, ctx):
+        # Define a variable
         name = ctx.IDENTIFIER().getText()
         value = self.visit(ctx.expr())
         self.global_env[name] = value
         return None
 
     def visitFuncDef(self, ctx):
+        # Define a function
         func_name = ctx.IDENTIFIER(0).getText()
         params = [p.getText() for p in ctx.IDENTIFIER()[1:]]
         body_exprs = ctx.expr()
@@ -89,6 +94,7 @@ class SchemeInterpreter(schemeVisitor):
         return None
 
     def visitLambdaExpr(self, ctx):
+        # Define a lambda function
         params = [p.getText() for p in ctx.IDENTIFIER()]
         body_exprs = ctx.expr()
         def_env = self.current_env.copy()
@@ -112,6 +118,7 @@ class SchemeInterpreter(schemeVisitor):
         return lambda_wrapper
 
     def visitOperationExpr(self, ctx):
+        # Evaluate an arithmetic or relational operation
         op = ctx.operation().getText()
         args = [self.visit(expr) for expr in ctx.expr()]
         if op == '+':
@@ -146,6 +153,7 @@ class SchemeInterpreter(schemeVisitor):
             raise ValueError(f"Unknown operator: {op}")
 
     def visitLetExpr(self, ctx):
+        # Evaluate a let expression with local bindings
         new_env = self.current_env.copy()
         for binding in ctx.letBinding():
             var_name = binding.IDENTIFIER().getText()
@@ -162,6 +170,7 @@ class SchemeInterpreter(schemeVisitor):
             self.current_env = prev_env
 
     def visitIfExpr(self, ctx):
+        # Evaluate an if expression
         condition = self.visit(ctx.expr(0))
         if condition:
             return self.visit(ctx.expr(1))
@@ -169,6 +178,7 @@ class SchemeInterpreter(schemeVisitor):
             return self.visit(ctx.expr(2))
 
     def visitCondExpr(self, ctx):
+        # Evaluate a cond expression
         for clause in ctx.condClause():
             condition = self.visit(clause.expr(0))
             if condition:
@@ -176,6 +186,7 @@ class SchemeInterpreter(schemeVisitor):
         return None
 
     def visitQuoteExpr(self, ctx):
+        # Evaluate a quote expression
         expr = ctx.expr()
         if isinstance(expr, schemeParser.ListExprContext):
             return [self.visit(e) for e in expr.expr()]
@@ -186,15 +197,19 @@ class SchemeInterpreter(schemeVisitor):
         return self.visit(expr)
 
     def visitListExpr(self, ctx):
+        # Evaluate a list expression
         return [self.visit(e) for e in ctx.expr()]
 
     def visitBooleanExpr(self, ctx):
+        # Evaluate a boolean expression
         return ctx.BOOLEAN().getText() == '#t'
 
     def visitStringExpr(self, ctx):
+        # Evaluate a string expression
         return ctx.STRING().getText()[1:-1]
 
     def visitFunctionCall(self, ctx):
+        # Evaluate a function call
         func_name = ctx.IDENTIFIER().getText()
         args = [self.visit(expr) for expr in ctx.expr()]
         func = self.get_variable(func_name, self.current_env)
@@ -204,21 +219,25 @@ class SchemeInterpreter(schemeVisitor):
             raise TypeError(f"'{func_name}' is not callable")
 
     def visitIdentifierExpr(self, ctx):
+        # Evaluate an identifier expression
         var_name = ctx.IDENTIFIER().getText()
         return self.get_variable(var_name, self.current_env)
 
     def visitNumberExpr(self, ctx):
+        # Evaluate a number expression
         try:
             return int(ctx.NUMBER().getText())
         except ValueError:
             return float(ctx.NUMBER().getText())
 
     def visit(self, ctx):
+        # Visit a context
         if ctx is None:
             return None
         return super().visit(ctx)
 
     def visitExpressionStatement(self, ctx):
+        # Evaluate an expression statement
         result = self.visit(ctx.expr())
         return result
 
