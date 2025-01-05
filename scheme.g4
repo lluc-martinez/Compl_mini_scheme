@@ -41,6 +41,7 @@ expr
     | '(' 'let' '(' letBinding+ ')' expr+ ')'              # LetExpr
     | '(' 'if' expr expr expr ')'                          # IfExpr
     | '(' 'cond' condClause+ ')'                           # CondExpr
+    | '(' 'lambda' '(' IDENTIFIER* ')' expr+ ')'           # LambdaExpr
     | '(' operation expr+ ')'                              # OperationExpr
     | '(' IDENTIFIER expr* ')'                             # FunctionCall
     | QUOTE expr                                           # QuoteExpr

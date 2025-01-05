@@ -24,6 +24,42 @@
         '()
         (cons n (count-down (- n 1))))))
 
+; define a function that uses higher-order functions
+(define (apply-twice f x)
+  (f (f x)))
+
+; define a function to double a number
+(define (double x)
+  (* 2 x))
+
+; define the map function
+(define (map func lst)
+  (cond
+    ((null? lst) '())
+    (#t (cons (func (car lst)) (map func (cdr lst))))))
+
+; define the filter function
+(define (filter pred lst)
+  (cond
+    ((null? lst) '())
+    ((pred (car lst)) (cons (car lst) (filter pred (cdr lst))))
+    (#t (filter pred (cdr lst)))))
+
+; define a function to test map
+(define (map-test)
+  (map double '(1 2 3 4)))
+
+; define a function to test filter
+(define (filter-test)
+  (filter (lambda (x) (> x 2)) '(1 2 3 4)))
+
+; define a function to test let with multiple bindings
+(define (let-test)
+  (let ((a 10)
+        (b 20)
+        (c 30))
+    (+ a b c)))
+
 ; define a "main" that exercises the above
 (define (main)
   (display greeting)
@@ -72,4 +108,20 @@
     (display " = ")
     (display (factorial val))
     (newline))
+
+  (display "apply-twice double 3 = ")
+  (display (apply-twice double 3))
+  (newline)
+
+  (display "map-test = ")
+  (display (map-test))
+  (newline)
+
+  (display "filter-test = ")
+  (display (filter-test))
+  (newline)
+
+  (display "let-test = ")
+  (display (let-test))
+  (newline)
 )

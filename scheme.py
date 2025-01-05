@@ -88,6 +88,29 @@ class SchemeInterpreter(schemeVisitor):
         self.global_env[func_name] = func_wrapper
         return None
 
+    def visitLambdaExpr(self, ctx):
+        params = [p.getText() for p in ctx.IDENTIFIER()]
+        body_exprs = ctx.expr()
+        def_env = self.current_env.copy()
+
+        def lambda_wrapper(*args):
+            if len(args) != len(params):
+                raise ValueError(f"Incorrect number of arguments for lambda")
+            lambda_env = def_env.copy()
+            for param, arg in zip(params, args):
+                lambda_env[param] = arg
+            prev_env = self.current_env
+            self.current_env = lambda_env
+            try:
+                result = None
+                for expr in body_exprs:
+                    result = self.visit(expr)
+                return result
+            finally:
+                self.current_env = prev_env
+
+        return lambda_wrapper
+
     def visitOperationExpr(self, ctx):
         op = ctx.operation().getText()
         args = [self.visit(expr) for expr in ctx.expr()]
@@ -174,31 +197,15 @@ class SchemeInterpreter(schemeVisitor):
     def visitFunctionCall(self, ctx):
         func_name = ctx.IDENTIFIER().getText()
         args = [self.visit(expr) for expr in ctx.expr()]
-        if func_name not in self.global_env:
-            raise NameError(f"Undefined function: {func_name}")
-        func = self.global_env[func_name]
+        func = self.get_variable(func_name, self.current_env)
         if callable(func):
-            if (isinstance(func, type(lambda: None))
-                    and not hasattr(func, '__defaults__')):
-                return func(*args)
-            new_env = self.current_env.copy()
-            prev_env = self.current_env
-            self.current_env = new_env
-            try:
-                return func(*args)
-            finally:
-                self.current_env = prev_env
+            return func(*args)
         else:
             raise TypeError(f"'{func_name}' is not callable")
 
     def visitIdentifierExpr(self, ctx):
         var_name = ctx.IDENTIFIER().getText()
-        try:
-            return self.get_variable(var_name, self.current_env)
-        except NameError:
-            if var_name in self.global_env:
-                return self.global_env[var_name]
-            raise NameError(f"Undefined variable: {var_name}")
+        return self.get_variable(var_name, self.current_env)
 
     def visitNumberExpr(self, ctx):
         try:

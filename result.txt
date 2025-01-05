@@ -8,3 +8,7 @@ count-down from 5 = [5, 4, 3, 2, 1, 0]
 Type two numbers for 'read' test: You typed: 2 and 10
 Their product is: 20
 Type a number for factorial: Factorial of 4 = 24
+apply-twice double 3 = 12
+map-test = [2, 4, 6, 8]
+filter-test = [3, 4]
+let-test = 60

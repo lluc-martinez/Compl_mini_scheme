@@ -62,6 +62,15 @@ class schemeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by schemeParser#LambdaExpr.
+    def enterLambdaExpr(self, ctx:schemeParser.LambdaExprContext):
+        pass
+
+    # Exit a parse tree produced by schemeParser#LambdaExpr.
+    def exitLambdaExpr(self, ctx:schemeParser.LambdaExprContext):
+        pass
+
+
     # Enter a parse tree produced by schemeParser#OperationExpr.
     def enterOperationExpr(self, ctx:schemeParser.OperationExprContext):
         pass

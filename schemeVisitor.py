@@ -39,6 +39,11 @@ class schemeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by schemeParser#LambdaExpr.
+    def visitLambdaExpr(self, ctx:schemeParser.LambdaExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by schemeParser#OperationExpr.
     def visitOperationExpr(self, ctx:schemeParser.OperationExprContext):
         return self.visitChildren(ctx)

@@ -10,47 +10,53 @@ else:
 
 def serializedATN():
     return [
-        4,1,23,121,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,1,0,5,0,12,8,
+        4,1,24,138,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,1,0,5,0,12,8,
         0,10,0,12,0,15,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,5,1,24,8,1,10,1,12,
         1,27,9,1,1,1,1,1,4,1,31,8,1,11,1,12,1,32,1,1,1,1,1,1,1,1,1,1,1,1,
         1,1,1,1,1,1,1,1,1,1,1,1,4,1,47,8,1,11,1,12,1,48,1,1,1,1,4,1,53,8,
         1,11,1,12,1,54,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
-        1,69,8,1,11,1,12,1,70,1,1,1,1,1,1,1,1,1,1,4,1,78,8,1,11,1,12,1,79,
-        1,1,1,1,1,1,1,1,1,1,5,1,87,8,1,10,1,12,1,90,9,1,1,1,1,1,1,1,1,1,
-        1,1,1,1,1,1,1,1,1,1,5,1,101,8,1,10,1,12,1,104,9,1,1,1,3,1,107,8,
-        1,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,0,0,5,0,2,
-        4,6,8,0,1,1,0,7,16,136,0,13,1,0,0,0,2,106,1,0,0,0,4,108,1,0,0,0,
-        6,110,1,0,0,0,8,115,1,0,0,0,10,12,3,2,1,0,11,10,1,0,0,0,12,15,1,
-        0,0,0,13,11,1,0,0,0,13,14,1,0,0,0,14,16,1,0,0,0,15,13,1,0,0,0,16,
-        17,5,0,0,1,17,1,1,0,0,0,18,19,5,1,0,0,19,20,5,2,0,0,20,21,5,1,0,
-        0,21,25,5,21,0,0,22,24,5,21,0,0,23,22,1,0,0,0,24,27,1,0,0,0,25,23,
-        1,0,0,0,25,26,1,0,0,0,26,28,1,0,0,0,27,25,1,0,0,0,28,30,5,3,0,0,
-        29,31,3,2,1,0,30,29,1,0,0,0,31,32,1,0,0,0,32,30,1,0,0,0,32,33,1,
-        0,0,0,33,34,1,0,0,0,34,35,5,3,0,0,35,107,1,0,0,0,36,37,5,1,0,0,37,
-        38,5,2,0,0,38,39,5,21,0,0,39,40,3,2,1,0,40,41,5,3,0,0,41,107,1,0,
-        0,0,42,43,5,1,0,0,43,44,5,4,0,0,44,46,5,1,0,0,45,47,3,8,4,0,46,45,
-        1,0,0,0,47,48,1,0,0,0,48,46,1,0,0,0,48,49,1,0,0,0,49,50,1,0,0,0,
-        50,52,5,3,0,0,51,53,3,2,1,0,52,51,1,0,0,0,53,54,1,0,0,0,54,52,1,
-        0,0,0,54,55,1,0,0,0,55,56,1,0,0,0,56,57,5,3,0,0,57,107,1,0,0,0,58,
-        59,5,1,0,0,59,60,5,5,0,0,60,61,3,2,1,0,61,62,3,2,1,0,62,63,3,2,1,
-        0,63,64,5,3,0,0,64,107,1,0,0,0,65,66,5,1,0,0,66,68,5,6,0,0,67,69,
-        3,6,3,0,68,67,1,0,0,0,69,70,1,0,0,0,70,68,1,0,0,0,70,71,1,0,0,0,
-        71,72,1,0,0,0,72,73,5,3,0,0,73,107,1,0,0,0,74,75,5,1,0,0,75,77,3,
-        4,2,0,76,78,3,2,1,0,77,76,1,0,0,0,78,79,1,0,0,0,79,77,1,0,0,0,79,
-        80,1,0,0,0,80,81,1,0,0,0,81,82,5,3,0,0,82,107,1,0,0,0,83,84,5,1,
-        0,0,84,88,5,21,0,0,85,87,3,2,1,0,86,85,1,0,0,0,87,90,1,0,0,0,88,
-        86,1,0,0,0,88,89,1,0,0,0,89,91,1,0,0,0,90,88,1,0,0,0,91,107,5,3,
-        0,0,92,93,5,18,0,0,93,107,3,2,1,0,94,107,5,20,0,0,95,107,5,19,0,
-        0,96,107,5,21,0,0,97,107,5,17,0,0,98,102,5,1,0,0,99,101,3,2,1,0,
-        100,99,1,0,0,0,101,104,1,0,0,0,102,100,1,0,0,0,102,103,1,0,0,0,103,
-        105,1,0,0,0,104,102,1,0,0,0,105,107,5,3,0,0,106,18,1,0,0,0,106,36,
-        1,0,0,0,106,42,1,0,0,0,106,58,1,0,0,0,106,65,1,0,0,0,106,74,1,0,
-        0,0,106,83,1,0,0,0,106,92,1,0,0,0,106,94,1,0,0,0,106,95,1,0,0,0,
-        106,96,1,0,0,0,106,97,1,0,0,0,106,98,1,0,0,0,107,3,1,0,0,0,108,109,
-        7,0,0,0,109,5,1,0,0,0,110,111,5,1,0,0,111,112,3,2,1,0,112,113,3,
-        2,1,0,113,114,5,3,0,0,114,7,1,0,0,0,115,116,5,1,0,0,116,117,5,21,
-        0,0,117,118,3,2,1,0,118,119,5,3,0,0,119,9,1,0,0,0,10,13,25,32,48,
-        54,70,79,88,102,106
+        1,69,8,1,11,1,12,1,70,1,1,1,1,1,1,1,1,1,1,1,1,5,1,79,8,1,10,1,12,
+        1,82,9,1,1,1,1,1,4,1,86,8,1,11,1,12,1,87,1,1,1,1,1,1,1,1,1,1,4,1,
+        95,8,1,11,1,12,1,96,1,1,1,1,1,1,1,1,1,1,5,1,104,8,1,10,1,12,1,107,
+        9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,118,8,1,10,1,12,1,121,
+        9,1,1,1,3,1,124,8,1,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,4,
+        1,4,1,4,0,0,5,0,2,4,6,8,0,1,1,0,8,17,156,0,13,1,0,0,0,2,123,1,0,
+        0,0,4,125,1,0,0,0,6,127,1,0,0,0,8,132,1,0,0,0,10,12,3,2,1,0,11,10,
+        1,0,0,0,12,15,1,0,0,0,13,11,1,0,0,0,13,14,1,0,0,0,14,16,1,0,0,0,
+        15,13,1,0,0,0,16,17,5,0,0,1,17,1,1,0,0,0,18,19,5,1,0,0,19,20,5,2,
+        0,0,20,21,5,1,0,0,21,25,5,22,0,0,22,24,5,22,0,0,23,22,1,0,0,0,24,
+        27,1,0,0,0,25,23,1,0,0,0,25,26,1,0,0,0,26,28,1,0,0,0,27,25,1,0,0,
+        0,28,30,5,3,0,0,29,31,3,2,1,0,30,29,1,0,0,0,31,32,1,0,0,0,32,30,
+        1,0,0,0,32,33,1,0,0,0,33,34,1,0,0,0,34,35,5,3,0,0,35,124,1,0,0,0,
+        36,37,5,1,0,0,37,38,5,2,0,0,38,39,5,22,0,0,39,40,3,2,1,0,40,41,5,
+        3,0,0,41,124,1,0,0,0,42,43,5,1,0,0,43,44,5,4,0,0,44,46,5,1,0,0,45,
+        47,3,8,4,0,46,45,1,0,0,0,47,48,1,0,0,0,48,46,1,0,0,0,48,49,1,0,0,
+        0,49,50,1,0,0,0,50,52,5,3,0,0,51,53,3,2,1,0,52,51,1,0,0,0,53,54,
+        1,0,0,0,54,52,1,0,0,0,54,55,1,0,0,0,55,56,1,0,0,0,56,57,5,3,0,0,
+        57,124,1,0,0,0,58,59,5,1,0,0,59,60,5,5,0,0,60,61,3,2,1,0,61,62,3,
+        2,1,0,62,63,3,2,1,0,63,64,5,3,0,0,64,124,1,0,0,0,65,66,5,1,0,0,66,
+        68,5,6,0,0,67,69,3,6,3,0,68,67,1,0,0,0,69,70,1,0,0,0,70,68,1,0,0,
+        0,70,71,1,0,0,0,71,72,1,0,0,0,72,73,5,3,0,0,73,124,1,0,0,0,74,75,
+        5,1,0,0,75,76,5,7,0,0,76,80,5,1,0,0,77,79,5,22,0,0,78,77,1,0,0,0,
+        79,82,1,0,0,0,80,78,1,0,0,0,80,81,1,0,0,0,81,83,1,0,0,0,82,80,1,
+        0,0,0,83,85,5,3,0,0,84,86,3,2,1,0,85,84,1,0,0,0,86,87,1,0,0,0,87,
+        85,1,0,0,0,87,88,1,0,0,0,88,89,1,0,0,0,89,90,5,3,0,0,90,124,1,0,
+        0,0,91,92,5,1,0,0,92,94,3,4,2,0,93,95,3,2,1,0,94,93,1,0,0,0,95,96,
+        1,0,0,0,96,94,1,0,0,0,96,97,1,0,0,0,97,98,1,0,0,0,98,99,5,3,0,0,
+        99,124,1,0,0,0,100,101,5,1,0,0,101,105,5,22,0,0,102,104,3,2,1,0,
+        103,102,1,0,0,0,104,107,1,0,0,0,105,103,1,0,0,0,105,106,1,0,0,0,
+        106,108,1,0,0,0,107,105,1,0,0,0,108,124,5,3,0,0,109,110,5,19,0,0,
+        110,124,3,2,1,0,111,124,5,21,0,0,112,124,5,20,0,0,113,124,5,22,0,
+        0,114,124,5,18,0,0,115,119,5,1,0,0,116,118,3,2,1,0,117,116,1,0,0,
+        0,118,121,1,0,0,0,119,117,1,0,0,0,119,120,1,0,0,0,120,122,1,0,0,
+        0,121,119,1,0,0,0,122,124,5,3,0,0,123,18,1,0,0,0,123,36,1,0,0,0,
+        123,42,1,0,0,0,123,58,1,0,0,0,123,65,1,0,0,0,123,74,1,0,0,0,123,
+        91,1,0,0,0,123,100,1,0,0,0,123,109,1,0,0,0,123,111,1,0,0,0,123,112,
+        1,0,0,0,123,113,1,0,0,0,123,114,1,0,0,0,123,115,1,0,0,0,124,3,1,
+        0,0,0,125,126,7,0,0,0,126,5,1,0,0,0,127,128,5,1,0,0,128,129,3,2,
+        1,0,129,130,3,2,1,0,130,131,5,3,0,0,131,7,1,0,0,0,132,133,5,1,0,
+        0,133,134,5,22,0,0,134,135,3,2,1,0,135,136,5,3,0,0,136,9,1,0,0,0,
+        12,13,25,32,48,54,70,80,87,96,105,119,123
     ]
 
 class schemeParser ( Parser ):
@@ -64,15 +70,16 @@ class schemeParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'('", "'define'", "')'", "'let'", "'if'", 
-                     "'cond'", "'+'", "'-'", "'*'", "'/'", "'>'", "'<'", 
-                     "'>='", "'<='", "'='", "'<>'", "<INVALID>", "'''" ]
+                     "'cond'", "'lambda'", "'+'", "'-'", "'*'", "'/'", "'>'", 
+                     "'<'", "'>='", "'<='", "'='", "'<>'", "<INVALID>", 
+                     "'''" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "BOOLEAN", "QUOTE", "STRING", "NUMBER", 
-                      "IDENTIFIER", "WS", "COMMENT" ]
+                      "<INVALID>", "<INVALID>", "BOOLEAN", "QUOTE", "STRING", 
+                      "NUMBER", "IDENTIFIER", "WS", "COMMENT" ]
 
     RULE_program = 0
     RULE_expr = 1
@@ -99,13 +106,14 @@ class schemeParser ( Parser ):
     T__13=14
     T__14=15
     T__15=16
-    BOOLEAN=17
-    QUOTE=18
-    STRING=19
-    NUMBER=20
-    IDENTIFIER=21
-    WS=22
-    COMMENT=23
+    T__16=17
+    BOOLEAN=18
+    QUOTE=19
+    STRING=20
+    NUMBER=21
+    IDENTIFIER=22
+    WS=23
+    COMMENT=24
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -163,7 +171,7 @@ class schemeParser ( Parser ):
             self.state = 13
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 4063234) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 8126466) != 0):
                 self.state = 10
                 self.expr()
                 self.state = 15
@@ -280,6 +288,39 @@ class schemeParser ( Parser ):
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLetExpr" ):
                 return visitor.visitLetExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class LambdaExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a schemeParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def IDENTIFIER(self, i:int=None):
+            if i is None:
+                return self.getTokens(schemeParser.IDENTIFIER)
+            else:
+                return self.getToken(schemeParser.IDENTIFIER, i)
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(schemeParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(schemeParser.ExprContext,i)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLambdaExpr" ):
+                listener.enterLambdaExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLambdaExpr" ):
+                listener.exitLambdaExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLambdaExpr" ):
+                return visitor.visitLambdaExpr(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -567,9 +608,9 @@ class schemeParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_expr)
         self._la = 0 # Token type
         try:
-            self.state = 106
+            self.state = 123
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
             if la_ == 1:
                 localctx = schemeParser.FuncDefContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -584,7 +625,7 @@ class schemeParser ( Parser ):
                 self.state = 25
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==21:
+                while _la==22:
                     self.state = 22
                     self.match(schemeParser.IDENTIFIER)
                     self.state = 27
@@ -602,7 +643,7 @@ class schemeParser ( Parser ):
                     self.state = 32 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 4063234) != 0)):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 8126466) != 0)):
                         break
 
                 self.state = 34
@@ -656,7 +697,7 @@ class schemeParser ( Parser ):
                     self.state = 54 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 4063234) != 0)):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 8126466) != 0)):
                         break
 
                 self.state = 56
@@ -704,102 +745,139 @@ class schemeParser ( Parser ):
                 pass
 
             elif la_ == 6:
-                localctx = schemeParser.OperationExprContext(self, localctx)
+                localctx = schemeParser.LambdaExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
                 self.state = 74
                 self.match(schemeParser.T__0)
                 self.state = 75
-                self.operation()
-                self.state = 77 
+                self.match(schemeParser.T__6)
+                self.state = 76
+                self.match(schemeParser.T__0)
+                self.state = 80
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while _la==22:
+                    self.state = 77
+                    self.match(schemeParser.IDENTIFIER)
+                    self.state = 82
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                self.state = 83
+                self.match(schemeParser.T__2)
+                self.state = 85 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 76
+                    self.state = 84
                     self.expr()
-                    self.state = 79 
+                    self.state = 87 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 4063234) != 0)):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 8126466) != 0)):
                         break
 
-                self.state = 81
+                self.state = 89
                 self.match(schemeParser.T__2)
                 pass
 
             elif la_ == 7:
-                localctx = schemeParser.FunctionCallContext(self, localctx)
+                localctx = schemeParser.OperationExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 7)
-                self.state = 83
+                self.state = 91
                 self.match(schemeParser.T__0)
-                self.state = 84
-                self.match(schemeParser.IDENTIFIER)
-                self.state = 88
+                self.state = 92
+                self.operation()
+                self.state = 94 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & 4063234) != 0):
-                    self.state = 85
+                while True:
+                    self.state = 93
                     self.expr()
-                    self.state = 90
+                    self.state = 96 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 8126466) != 0)):
+                        break
 
-                self.state = 91
+                self.state = 98
                 self.match(schemeParser.T__2)
                 pass
 
             elif la_ == 8:
-                localctx = schemeParser.QuoteExprContext(self, localctx)
+                localctx = schemeParser.FunctionCallContext(self, localctx)
                 self.enterOuterAlt(localctx, 8)
-                self.state = 92
-                self.match(schemeParser.QUOTE)
-                self.state = 93
-                self.expr()
-                pass
-
-            elif la_ == 9:
-                localctx = schemeParser.NumberExprContext(self, localctx)
-                self.enterOuterAlt(localctx, 9)
-                self.state = 94
-                self.match(schemeParser.NUMBER)
-                pass
-
-            elif la_ == 10:
-                localctx = schemeParser.StringExprContext(self, localctx)
-                self.enterOuterAlt(localctx, 10)
-                self.state = 95
-                self.match(schemeParser.STRING)
-                pass
-
-            elif la_ == 11:
-                localctx = schemeParser.IdentifierExprContext(self, localctx)
-                self.enterOuterAlt(localctx, 11)
-                self.state = 96
-                self.match(schemeParser.IDENTIFIER)
-                pass
-
-            elif la_ == 12:
-                localctx = schemeParser.BooleanExprContext(self, localctx)
-                self.enterOuterAlt(localctx, 12)
-                self.state = 97
-                self.match(schemeParser.BOOLEAN)
-                pass
-
-            elif la_ == 13:
-                localctx = schemeParser.ListExprContext(self, localctx)
-                self.enterOuterAlt(localctx, 13)
-                self.state = 98
+                self.state = 100
                 self.match(schemeParser.T__0)
-                self.state = 102
+                self.state = 101
+                self.match(schemeParser.IDENTIFIER)
+                self.state = 105
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & 4063234) != 0):
-                    self.state = 99
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & 8126466) != 0):
+                    self.state = 102
                     self.expr()
-                    self.state = 104
+                    self.state = 107
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 105
+                self.state = 108
+                self.match(schemeParser.T__2)
+                pass
+
+            elif la_ == 9:
+                localctx = schemeParser.QuoteExprContext(self, localctx)
+                self.enterOuterAlt(localctx, 9)
+                self.state = 109
+                self.match(schemeParser.QUOTE)
+                self.state = 110
+                self.expr()
+                pass
+
+            elif la_ == 10:
+                localctx = schemeParser.NumberExprContext(self, localctx)
+                self.enterOuterAlt(localctx, 10)
+                self.state = 111
+                self.match(schemeParser.NUMBER)
+                pass
+
+            elif la_ == 11:
+                localctx = schemeParser.StringExprContext(self, localctx)
+                self.enterOuterAlt(localctx, 11)
+                self.state = 112
+                self.match(schemeParser.STRING)
+                pass
+
+            elif la_ == 12:
+                localctx = schemeParser.IdentifierExprContext(self, localctx)
+                self.enterOuterAlt(localctx, 12)
+                self.state = 113
+                self.match(schemeParser.IDENTIFIER)
+                pass
+
+            elif la_ == 13:
+                localctx = schemeParser.BooleanExprContext(self, localctx)
+                self.enterOuterAlt(localctx, 13)
+                self.state = 114
+                self.match(schemeParser.BOOLEAN)
+                pass
+
+            elif la_ == 14:
+                localctx = schemeParser.ListExprContext(self, localctx)
+                self.enterOuterAlt(localctx, 14)
+                self.state = 115
+                self.match(schemeParser.T__0)
+                self.state = 119
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & 8126466) != 0):
+                    self.state = 116
+                    self.expr()
+                    self.state = 121
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                self.state = 122
                 self.match(schemeParser.T__2)
                 pass
 
@@ -848,9 +926,9 @@ class schemeParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 108
+            self.state = 125
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 130944) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 261888) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -904,13 +982,13 @@ class schemeParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_condClause)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 110
+            self.state = 127
             self.match(schemeParser.T__0)
-            self.state = 111
+            self.state = 128
             self.expr()
-            self.state = 112
+            self.state = 129
             self.expr()
-            self.state = 113
+            self.state = 130
             self.match(schemeParser.T__2)
         except RecognitionException as re:
             localctx.exception = re
@@ -961,13 +1039,13 @@ class schemeParser ( Parser ):
         self.enterRule(localctx, 8, self.RULE_letBinding)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 115
+            self.state = 132
             self.match(schemeParser.T__0)
-            self.state = 116
+            self.state = 133
             self.match(schemeParser.IDENTIFIER)
-            self.state = 117
+            self.state = 134
             self.expr()
-            self.state = 118
+            self.state = 135
             self.match(schemeParser.T__2)
         except RecognitionException as re:
             localctx.exception = re
