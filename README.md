@@ -60,7 +60,14 @@ L'intèrpret inclou un maneig bàsic d'errors per a variables i funcions no defi
 
 ## Proves
 
-El projecte inclou un conjunt complet de jocs de proves a `test_extended.scm` per verificar la funcionalitat de l'intèrpret. Les proves cobreixen diverses característiques com operacions aritmètiques, definicions de funcions, condicionals, operacions de llistes i funcions d'ordre superior. La sortida esperada es proporciona a `test_extended.out`.
+El projecte inclou un conjunt complet de jocs de proves a `test_extended.scm` per verificar la funcionalitat de l'intèrpret. Les proves cobreixen diverses característiques com operacions aritmètiques, definicions de funcions, condicionals, operacions de llistes i funcions d'ordre superior. La sortida esperada es proporciona a `test_extended.out`. També hi ha un fitxer d'entrada `test_extended.inp` que conté les dades d'entrada per a les proves.
+
+Per executar les proves, utilitza la següent comanda:
+
+```bash
+python3 scheme.py test_extended.scm < test_extended.inp > result.out
+diff test_extended.out result.out
+```
 
 ### Detalls dels tests
 
