@@ -1,65 +1,59 @@
 grammar scheme;
 
-// Lexer rules should come before parser rules
-BOOLEAN
-    : '#t'
-    | '#f'
-    ;
-
-QUOTE
-    : '\''
-    ;
-
-STRING
-    : '"' (~["\r\n] | '\\"')* '"'
-    ;
-
-NUMBER
-    : '-'? [0-9]+ ('.' [0-9]+)?  // allow optional decimal part
-    ;
-
-IDENTIFIER
-    : [a-zA-Z_+\-*/<>=][a-zA-Z_0-9+\-*/<>=?]*
-    ;
-
-WS
-    : [ \t\r\n]+ -> skip
-    ;
-
-COMMENT
-    : ';' ~[\r\n]* -> skip
-    ;
-
-// Parser rules
+// Programa principal
 program
     : expr* EOF
     ;
 
+// Definición de expresiones
 expr
-    : '(' 'define' '(' IDENTIFIER IDENTIFIER* ')' expr+ ')'  # FuncDef
-    | '(' 'define' IDENTIFIER expr ')'                      # VarDef
-    | '(' 'let' '(' letBinding+ ')' expr+ ')'              # LetExpr
-    | '(' 'if' expr expr expr ')'                          # IfExpr
-    | '(' 'cond' condClause+ ')'                           # CondExpr
-    | '(' 'lambda' '(' IDENTIFIER* ')' expr+ ')'           # LambdaExpr
-    | '(' operation expr+ ')'                              # OperationExpr
-    | '(' IDENTIFIER expr* ')'                             # FunctionCall
-    | QUOTE expr                                           # QuoteExpr
-    | NUMBER                                               # NumberExpr
-    | STRING                                               # StringExpr
-    | IDENTIFIER                                           # IdentifierExpr
-    | BOOLEAN                                              # BooleanExpr
-    | '(' expr* ')'                                        # ListExpr
+    : '(' IDENTIFIER expr* ')'  // Llamadas a función u operadores
+    | NUMBER                    // Números
+    | BOOLEAN                   // Booleanos
+    | STRING                    // Cadenas de texto
+    | IDENTIFIER                // Variables
+    | QUOTE expr                // Expresión citada
     ;
 
-operation
-    : '+' | '-' | '*' | '/' | '>' | '<' | '>=' | '<=' | '=' | '<>'
+// Definición de tokens
+NUMBER
+    : [0-9]+ ('.' [0-9]+)?      // Enteros y flotantes
     ;
 
-condClause
-    : '(' expr expr ')'
+BOOLEAN
+    : '#t'                      // Verdadero
+    | '#f'                      // Falso
     ;
 
-letBinding
-    : '(' IDENTIFIER expr ')'
+STRING
+    : '"' (~["\\] | '\\' .)* '"' // Cadena de texto entre comillas
+    ;
+
+IDENTIFIER
+    : [a-zA-Z_][a-zA-Z0-9_]*    // Nombres de variables o funciones
+    ;
+
+QUOTE
+    : '\''                      // Quote literal
+    ;
+
+// Operadores
+PLUS      : '+' ;
+MINUS     : '-' ;
+STAR      : '*' ;
+SLASH     : '/' ;
+LT        : '<' ;
+LE        : '<=' ;
+GT        : '>' ;
+GE        : '>=' ;
+EQUAL     : '=' ;
+NOT_EQUAL : '<>' ;
+
+// Espacios en blanco y comentarios
+WS
+    : [ \t\r\n]+ -> skip         // Ignorar espacios en blanco
+    ;
+
+COMMENT
+    : ';' ~[\r\n]* -> skip       // Comentarios de una sola línea
     ;
